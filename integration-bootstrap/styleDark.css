@@ -1,0 +1,45 @@
+.dark-mode {
+  background: #14092a;
+  color: #d1c0f1;
+}
+.dark-mode .navbar {
+  background: #14092a;
+}
+.dark-mode .navbar-brand.yoga-logo {
+  background: linear-gradient(-163deg, #ff52af, #9f53ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+.dark-mode .navbar-nav .nav-link {
+  color: #d1c0f1 !important;
+}
+.dark-mode .navbar-nav .nav-link.active {
+  background: linear-gradient(-163deg, #ff52af, #9f53ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+.dark-mode .navbar-icon {
+  color: #d1c0f1;
+}
+
+/* Make the mobile grid button icon inherit dark-mode color */
+.dark-mode .grid-btn,
+.dark-mode .grid-btn svg,
+.dark-mode .grid-btn .navbar-icon {
+  color: #d1c0f1;
+}
+.dark-mode .hero-title,
+.dark-mode .stat-number,
+.dark-mode .stat-label {
+  color: #d1c0f1;
+}
+
+.hero-lead {
+  color: #a094b8;
+}
