@@ -2,7 +2,8 @@
   background: #14092a;
   color: #d1c0f1;
 }
-.dark-mode .navbar {
+.dark-mode .navbar,
+.dark-mode .site-footer {
   background: #14092a;
 }
 .dark-mode .navbar-brand.yoga-logo {
@@ -28,18 +29,35 @@
   color: #d1c0f1;
 }
 
-/* Make the mobile grid button icon inherit dark-mode color */
 .dark-mode .grid-btn,
 .dark-mode .grid-btn svg,
 .dark-mode .grid-btn .navbar-icon {
   color: #d1c0f1;
 }
 .dark-mode .hero-title,
+.dark-mode .health-title,
 .dark-mode .stat-number,
+.dark-mode .follow-title1,
 .dark-mode .stat-label {
   color: #d1c0f1;
 }
 
-.hero-lead {
+.dark-mode .hero-lead,
+.dark-mode .feature-text,
+.dark-mode .feature-index,
+.dark-mode .health-text {
   color: #a094b8;
+}
+
+.dark-mode .dropdown-menu {
+  background: #1a1140;
+  box-shadow: 0 2px 12px rgba(36, 10, 45, 0.25);
+  border-radius: 12px;
+}
+.dark-mode .dropdown-item {
+  color: #d1c0f1;
+}
+.dark-mode .dropdown-item:hover {
+  background: #220953;
+  color: #ff52af;
 }
