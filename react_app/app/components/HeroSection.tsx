@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
               </p>
 
               <div className="d-flex align-items-center gap-3 mt-4">
-                <a href="#" className="btn btn-cta">
+                <a href="/contact" className="btn btn-cta">
                   Get Started Free <span className="ms-2">➜</span>
                 </a>
               </div>
