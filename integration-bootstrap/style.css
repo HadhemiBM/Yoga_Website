@@ -631,3 +631,10 @@ body {
 .btn-follow {
   margin-top: 40px;
 }
+/* .allcont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+} */
