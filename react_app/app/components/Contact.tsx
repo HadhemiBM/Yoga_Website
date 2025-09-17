@@ -57,15 +57,15 @@ const Contact: React.FC = () => {
     <section className="contact-section py-5">
       <div className="container">
         <div className="contact-card mx-auto">
-          <h3 className="contact-title">Contactez-nous</h3>
+          <h3 className="contact-title">Contact Us</h3>
           <p className="contact-lead">
-            Envoyez-nous un message et nous vous répondrons rapidement.
+            Send us a message and we'll get back to you shortly.
           </p>
 
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
             <div className="mb-3">
               <label htmlFor="contact-name" className="form-label">
-                Nom
+                Name
               </label>
               <input
                 id="contact-name"
@@ -105,11 +105,11 @@ const Contact: React.FC = () => {
                 type="submit"
                 disabled={status === "sending"}
               >
-                {status === "sending" ? "Envoi..." : "Envoyer"}
+                {status === "sending" ? "Sending..." : "Send"}
               </button>
               {status === "success" && (
                 <div className="alert alert-success mb-0">
-                  Message envoyé avec succès.
+                  Message sent successfully.
                 </div>
               )}
               {status === "error" && error && (
