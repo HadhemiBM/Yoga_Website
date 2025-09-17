@@ -55,11 +55,17 @@ Dev dependencies notables:
 
 Si vous voulez que j'applique l'une de ces améliorations (par ex. convertir les liens en `Link` ou télécharger/installer localement les fichiers Poppins), dites-le et je m'en occupe.
 
-# Welcome to React Router!
+## Client reviews / Testimonials
 
-A modern, production-ready template for building full-stack React applications using React Router.
+J'ai ajouté une section de témoignages clients (component `Testimonials`) utilisée pour afficher des avis via un carrousel.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+- Fichier du composant : `app/components/Testimonials.tsx`.
+- Le carrousel est implémenté dans `app/components/Carousel.tsx` et utilisé par `Testimonials`.
+- Bibliothèques utilisées pour cette fonctionnalité :
+  - `motion/react` — animation et drag/gestures pour le carrousel.
+  - `react-icons` — icônes pour les petites décorations (étoiles, etc.).
+
+La section est montée sur la page d'accueil via `app/routes/home.tsx` (entre `Gallery` et `News`). Vous pouvez adapter les avis dans `Testimonials.tsx` ou brancher une source de données dynamique (JSON / CMS).
 
 ## Features
 
@@ -99,7 +105,6 @@ Create a production build:
 npm run build
 ```
 
-
 ### DIY Deployment
 
 If you're familiar with deploying Node applications, the built-in app server is production-ready.
@@ -117,4 +122,3 @@ Make sure to deploy the output of `npm run build`
 ## Styling
 
 This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-

@@ -1,0 +1,12 @@
+.testimonials {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.testimonials-section .container {
+  max-width: 100%;
+}
+
+.testimonials-section h3 {
+  color: var(--text-color, #220953);
+}

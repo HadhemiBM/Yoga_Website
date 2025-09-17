@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import "../../../integration-bootstrap/style.css";
 import "../../../integration-bootstrap/styleMobile.css";
 import "../../../integration-bootstrap/styleDark.css";
-import "../../../integration-bootstrap/style.css";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import Hero from "~/components/HeroSection";
@@ -11,7 +11,9 @@ import Feature from "~/components/FeatureSection";
 import Health1 from "~/components/HealthSection";
 import Health2 from "~/components/HealthSection2";
 import Gallery from "~/components/GallerySection";
+import Testimonials from "~/components/Testimonials";
 import News from "~/components/News";
+import Carousel from "~/components/Carousel";
 
 const Home: React.FC = () => {
   useEffect(() => {
@@ -189,9 +191,20 @@ const Home: React.FC = () => {
       <Feature />
       <Health1 />
       <Health2 />
+      <Testimonials />
       <Gallery />
+      {/* <div style={{ height: '600px', position: 'relative' }}>
+  <Carousel
+    baseWidth={300}
+    autoplay={true}
+    autoplayDelay={3000}
+    pauseOnHover={true}
+    loop={true}
+    round={false}
+  />
+</div> */}
       <News />
- 
+
       {/* Footer */}
       {/* <footer className="site-footer py-5">
         <div className="containerfooter">
