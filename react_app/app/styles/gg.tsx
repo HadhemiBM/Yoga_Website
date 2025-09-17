@@ -1,0 +1,1 @@
+import "../../../integration-bootstrap/img/BG1.png"

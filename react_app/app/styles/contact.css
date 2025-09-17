@@ -1,0 +1,21 @@
+.contact-card {
+  max-width: 720px;
+  padding: 24px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+}
+.contact-title {
+  margin-bottom: 8px;
+}
+.contact-lead {
+  margin-bottom: 16px;
+  color: #6b7280;
+}
+
+/* Dark mode adjustments */
+.dark-mode .contact-card {
+  background: #1b1430;
+  color: #e6def8;
+  box-shadow: none;
+}
