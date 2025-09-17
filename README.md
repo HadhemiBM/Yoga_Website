@@ -1,43 +1,163 @@
-# Home route
+# Yoga Website – Integration (Bootstrap)
 
-This folder contains the `Home` route component for the React app. The `Home` route assembles the page sections (Navbar, Hero, Features, Health sections, Gallery, Newsletter, Footer) and wires a few runtime behaviors.
+This folder contains the static integration of the Yoga landing page using HTML, CSS, and Bootstrap 5.
 
-## Files
+## Structure
 
-- `home.tsx` — top-level page component that imports legacy CSS and mounts components:
-  - Imports: `bootstrap` CSS, `integration-bootstrap` CSS files, and local components.
-  - Inline `useEffect` attaches a theme toggle and a small hover-dropdown behavior for the "Home" menu.
+- `index.html` – Main page markup, including:
+  - Responsive navbar with theme toggle (light/dark mode)
+  - Hero section
+  - Feature section
+  - Health sections
+  - Follow section
+  - Newsletter subscription
+  - Footer
+- `style.css` – Custom styles for layout, colors, typography, and responsive design.
+- `styleDark.css` – Dark mode overrides.
+- `img/` – All image assets (backgrounds, icons, gallery, etc.)
 
-## Components used
+## Features
 
-- `Navbar` (or `NavbarFromHtml`) — top navigation. You can switch between the two implementations by importing the desired component in `home.tsx`.
-- `Hero`, `Feature`, `Health1`, `Health2`, `Gallery`, `News`, `Footer` — page sections.
+- **Responsive Design:** Uses Bootstrap 5 grid and utilities for mobile/desktop layouts.
+- **Theme Toggle:** Switch between light and dark mode; preference is saved.
+- **Dropdown Menus:** Navbar item  show dropdowns on hover.
+- **Modern UI:** Gradient backgrounds, custom fonts (Lora, Poppins), and smooth hover effects.
+- **Accessibility:** Semantic HTML, keyboard navigation for forms.
 
-## Important runtime dependencies
+## How to Run
 
-- Bootstrap JavaScript: `bootstrap/dist/js/bootstrap.bundle.min.js` must be imported once (it is imported in `app/root.tsx`) so interactive behaviors (collapse, dropdown) work.
+1. Open `index.html` in your browser.(or open with live server)
+2. All assets are local; no build step required.
 
-## Styling notes
+## Customization
 
-- The route intentionally imports the legacy CSS files from `integration-bootstrap` to preserve the original visual design.
-- Global fonts: `app.css` imports local font fallbacks and falls back to Google Fonts.
+- To change images, replace files in `img/`.
+- To adjust colors or layout, edit `style.css` and `styleDark.css`.
 
-## Troubleshooting
 
-- Navbar collapse doesn't open on small screens:
-  - Verify `bootstrap.bundle.min.js` is loaded (see DevTools → Network).
-  - Confirm the toggler button has `data-bs-target="#navbarNav"` and `aria-controls="navbarNav"` (without `#`).
-- Poppins font not applied:
-  - Ensure `react_app/public/fonts/` contains `Poppins-*.woff2` files or that Google Fonts network requests succeed.
-- Dropdown on hover not showing:
-  - The `home.tsx` code attaches hover listeners to `.nav-home-dropdown`; ensure `nav-home-dropdown` exists and there are no JS errors in console.
+# React App — Yoga Website
 
-## How to switch navbar implementations
+Guide de démarrage et notes pour le sous-projet `react_app`.
 
-1. Open `react_app/app/routes/home.tsx`.
-2. Replace the inline `<nav>` markup or the imported `<Navbar />` with `<NavbarFromHtml />` (import it from `~/components/NavbarFromHtml`).
+## Vue d'ensemble
 
-## Next steps / Improvements
+Cette application contient la version React du site statique présent dans `integration-bootstrap/`.
+Le projet utilise `react` + `react-router` pour les routes, et importe une grande partie du CSS original pour préserver l'apparence.
 
-- Convert legacy CSS into component-scoped styles to avoid global conflicts.
-- Move images used by the legacy CSS into `public/img/` for consistent asset resolution in the React app.
+Emplacement des fichiers importants:
+
+- `app/routes/home.tsx` — page d'accueil (assemble les sections : Navbar, Hero, Features, Gallery, Newsletter, Footer).
+- `app/routes/contact.tsx` — page Contact (rend le composant `Contact`).
+- `app/components` — composants React (HeroSection, Navbar, Footer, ...).
+- `app/styles` — styles composants importés localement (`hero-section.css`, `fonts.css`, ...).
+- `integration-bootstrap/` — assets et CSS originaux réutilisés.
+
+Note: This project now includes a dedicated Contact page at `/contact` and a Testimonials (client reviews) section on the homepage. See `app/routes/contact.tsx` and `app/components/Testimonials.tsx` for implementation details.
+
+## Commandes utiles
+
+- `npm run dev` — démarre le serveur de développement (hot-reload).
+- `npm run build` — génère la build côté serveur pour production via `react-router build`.
+- `npm start` — sert la build générée (`react-router-serve`).
+- `npm run typecheck` — exécute les types React Router et `tsc` pour la vérification TypeScript.
+
+## Dépendances principales et rôle
+
+- `react`, `react-dom` — base de l'application UI.
+- `react-router` (v7) et `@react-router/dev` — routage côté serveur & dev (le projet est configuré pour utiliser l'outil `react-router dev/build/serve`).
+- `bootstrap` — utilitaires CSS et composants (la CSS est importée dans `home.tsx`).
+  - Important : `bootstrap/dist/js/bootstrap.bundle.min.js` est importé dans `app/root.tsx` pour activer les composants interactifs (collapse, dropdown). Sans ce bundle, le collapse du navbar ne fonctionne pas.
+- `isbot` — utilitaire utilisé par `react-router` internement pour détection d'agents (préinstallé par la stack).
+
+Dev dependencies notables:
+
+- `vite` — bundler / dev server utilisé par the `react-router dev` flow.
+- `typescript`, `@types/*` — type checking for development.
+- `tailwindcss` & `@tailwindcss/vite` — present in `app.css` (utility directives are included in the project template), you can remove or adapt them if you don't use Tailwind.
+
+## Remarques spécifiques
+
+- Fonts: the app uses a local `@font-face` fallback for Poppins (files expected under `public/fonts/Poppins-*.woff2`). If those files are absent, the app falls back to Google Fonts via a network import. See `app/styles/fonts.css` and `public/fonts/README.md`.
+- Legacy CSS: the project currently imports the original site CSS from `integration-bootstrap` to keep the visual look. Consider migrating those rules into component-scoped CSS to avoid global conflicts.
+- Routing: routes are declared in `app/routes.ts`. Add new route files under `app/routes/` and export them via the `routes.ts` manifest if needed.
+
+## Débogage rapide
+
+- 404 sur `/contact` : assurez-vous d'avoir ajouté `routes/contact.tsx` à `app/routes.ts` (présent par défaut dans cette copie). Si vous voyez toujours un 404, redémarrez le serveur de dev.
+- Navbar collapse ne fonctionne : vérifier que `bootstrap` JS est importé dans `app/root.tsx` et qu'il n'y a pas d'erreurs JS dans la console.
+
+## Prochaines améliorations suggérées
+
+- Convertir le CSS global en CSS modules / CSS-in-JS pour isoler les styles.
+- Remplacer les ancres `<a href="/contact">` par le composant `Link` du routeur pour une navigation SPA plus fluide.
+- Ajouter des tests unitaires et E2E pour vérifier le rendu des composants et le formulaire Contact.
+
+Si vous voulez que j'applique l'une de ces améliorations (par ex. convertir les liens en `Link` ou télécharger/installer localement les fichiers Poppins), dites-le et je m'en occupe.
+
+## Client reviews / Testimonials
+
+J'ai ajouté une section de témoignages clients (component `Testimonials`) utilisée pour afficher des avis via un carrousel.
+
+- Fichier du composant : `app/components/Testimonials.tsx`.
+- Le carrousel est implémenté dans `app/components/Carousel.tsx` et utilisé par `Testimonials`.
+- Bibliothèques utilisées pour cette fonctionnalité :
+  - `motion/react` — animation et drag/gestures pour le carrousel.
+  - `react-icons` — icônes pour les petites décorations (étoiles, etc.).
+
+La section est montée sur la page d'accueil via `app/routes/home.tsx` (entre `Gallery` et `News`). Vous pouvez adapter les avis dans `Testimonials.tsx` ou brancher une source de données dynamique (JSON / CMS).
+
+## Features
+
+- 🚀 Server-side rendering
+- ⚡️ Hot Module Replacement (HMR)
+- 📦 Asset bundling and optimization
+- 🔄 Data loading and mutations
+- 🔒 TypeScript by default
+- 🎉 TailwindCSS for styling
+- 📖 [React Router docs](https://reactrouter.com/)
+
+## Getting Started
+
+### Installation
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+### Development
+
+Start the development server with HMR:
+
+```bash
+npm run dev
+```
+
+Your application will be available at `http://localhost:5173`.
+
+## Building for Production
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+### DIY Deployment
+
+If you're familiar with deploying Node applications, the built-in app server is production-ready.
+
+Make sure to deploy the output of `npm run build`
+
+```
+├── package.json
+├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
+├── build/
+│   ├── client/    # Static assets
+│   └── server/    # Server-side code
+```
+
+## Styling
+
+This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
